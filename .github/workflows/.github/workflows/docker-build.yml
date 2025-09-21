@@ -1,0 +1,22 @@
+name: Docker Build
+
+on: 
+  push:
+    branches:["master"]
+  pull_request:
+    branches:["master"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      -name:Checkout repository
+       uses:actions/checkout@v3
+       
+       -name:Set up Docker Buildx
+       uses:docker/setup-buildx-actions@v3
+
+        -name:Build Docker image 
+         uses:docker build -t hello-devops .
+       
+       
